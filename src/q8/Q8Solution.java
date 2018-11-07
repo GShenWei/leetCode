@@ -10,6 +10,7 @@ import org.junit.Test;
  * @date 2017/5/27
  */
 public class Q8Solution {
+    //TODO 未解决
     public int myAtoi(String str) {
         str=str.trim();
         boolean isFu = false;

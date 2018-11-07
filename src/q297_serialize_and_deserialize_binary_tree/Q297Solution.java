@@ -16,6 +16,8 @@ import java.util.Queue;
 
 
 public class Q297Solution {
+    //TODO 未解决
+
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         String result = levelOrder(root);

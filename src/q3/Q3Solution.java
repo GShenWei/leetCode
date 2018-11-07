@@ -17,6 +17,7 @@ import java.util.Map;
 public class Q3Solution {
     public int lengthOfLongestSubstring(String s) {
         int result = 0;
+        //所存储的是某个字符在原始字符串中的最后一个字符位置
         int l = 0;
         Map<Character, List<Integer>> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
@@ -27,13 +28,13 @@ public class Q3Solution {
                 charNums.add(i);
                 map.put(c, charNums);
             } else {
-                int i1 = charNums.get(charNums.size() - 1) + 1;
-                l = l< i1 ? i1 :l;
+                //获取在插入现在这个字符之前目前这个字符所在的位置
+                int i1 = charNums.get(charNums.size() - 1);
+                //获取它们最大的原因是,可能之前的l已经考虑过其它的字符会有重复的
+                l = Math.max(l, i1);
                 charNums.add(i);
             }
-            if (result < i - l + 1) {
-                result = i - l + 1;
-            }
+            result = Math.max(result, i - l );
         }
         return result;
     }

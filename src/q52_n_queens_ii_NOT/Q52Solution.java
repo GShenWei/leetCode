@@ -10,6 +10,7 @@ import org.junit.Test;
  * @date 2017/12/14
  */
 public class Q52Solution {
+    //TODO 未解决
     public int totalNQueens(int n) {
         int[][] rout = new int[n][n];
         int[][] visit = new int[n][n];
