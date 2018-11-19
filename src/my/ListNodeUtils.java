@@ -1,7 +1,5 @@
 package my;
 
-import q92_reverse_linked_list_ii.Q92Solution;
-
 /**
  * @author wei.zhan@hand-china.com
  * @version 1.0

@@ -18,7 +18,7 @@ public class TreeNodeUtils {
             return null;
         }
         TreeNode[] nodes = new TreeNode[nums.length];
-        for (int i = 0; i < nums.length / 2; i++) {
+        for (int i = 0; i <= nums.length / 2; i++) {
             int leftIndex = i * 2 + 1;
             int rightIndex = i * 2 + 2;
 
@@ -29,10 +29,12 @@ public class TreeNodeUtils {
             if (nodes[i] == null) {
                 continue;
             }
-            if (nodes[leftIndex] == null) {
-                nodes[leftIndex] = createOneNode(nums[leftIndex]);
+            if (leftIndex < nums.length) {
+                if (nodes[leftIndex] == null) {
+                    nodes[leftIndex] = createOneNode(nums[leftIndex]);
+                }
+                nodes[i].left = nodes[leftIndex];
             }
-            nodes[i].left = nodes[leftIndex];
             if (rightIndex < nums.length) {
                 if (nodes[rightIndex] == null) {
                     nodes[rightIndex] = createOneNode(nums[rightIndex]);
