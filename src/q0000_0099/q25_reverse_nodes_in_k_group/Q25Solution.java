@@ -1,5 +1,7 @@
 package q0000_0099.q25_reverse_nodes_in_k_group;
 
+import my.ListNode;
+import my.ListNodeUtils;
 import org.junit.Test;
 
 /**
@@ -9,71 +11,61 @@ import org.junit.Test;
  * @description
  * @date 2017/12/19
  */
-
-class ListNode {
-    //TODO 未解决
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-}
-
 public class Q25Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || head.next == null || k == 1) {
             return head;
         }
-        ListNode h = new ListNode(Integer.MIN_VALUE);
-        h.next = head;
-        ListNode now = head;
-        ListNode pre = h;
-        ListNode lastGroupFoot = h;
-        ListNode thisGroupFoot = null;
-        ListNode thisGroupHead = null;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+
+        ListNode cur = head;
+        ListNode pre = dummy;
+        ListNode groupPre = null;
+        ListNode groupEnd;
         int i = 0;
-        while (now != null) {
+        while (cur != null) {
             i++;
-            ListNode next = now.next;
-            if(i==k|| next==null){
-                thisGroupHead = now;
+            if (i == 1) {
+                groupPre = pre;
             }
+            ListNode next = cur.next;
             if (i == k) {
+                groupEnd = cur;
+                cur = reverse(groupPre, groupEnd, k);
                 i = 0;
-                if (lastGroupFoot != null) {
-                    lastGroupFoot.next = now;
-                }
-                lastGroupFoot = thisGroupFoot;
-            } else if (i == 1) {
-                thisGroupFoot = now;
             }
-            if (i != 1) {
-                now.next = pre;
-            }
-            pre = now;
-            now = next;
+            pre = cur;
+            cur = next;
         }
-        if (lastGroupFoot != null) {
-            lastGroupFoot.next = thisGroupHead;
-            if(thisGroupFoot != null) {
-                thisGroupFoot.next = null;
-            }
+        return dummy.next;
+    }
+
+    private ListNode reverse(ListNode headPre, ListNode end, int k) {
+        if (end == null) {
+            return null;
         }
-        return h.next;
+        ListNode totalNext = end.next;
+        ListNode firstHead = headPre.next;
+        ListNode cur = headPre.next;
+
+        headPre.next = end;
+        ListNode pre = null;
+        while (k-- > 0) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        firstHead.next = totalNext;
+        return firstHead;
     }
 
     @Test
     public void tt() {
-        ListNode h = new ListNode(0);
-        ListNode n1 = h.next = new ListNode(1);
-        /*ListNode n2 = n1.next = new ListNode(2);
-        ListNode n3 = n2.next = new ListNode(3);
-        ListNode n4 = n3.next = new ListNode(4);
-        ListNode n5 = n4.next = new ListNode(5);
-        ListNode n6 = n5.next = new ListNode(6);
-        ListNode n7 = n6.next = new ListNode(7);*/
-        ListNode listNode = reverseKGroup(h, 2);
-        System.out.println(listNode);
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8};
+        ListNode node = ListNodeUtils.createListNode(nums);
+        ListNode listNode = reverseKGroup(node, 2);
+        ListNodeUtils.printNodeString(listNode);
     }
 }

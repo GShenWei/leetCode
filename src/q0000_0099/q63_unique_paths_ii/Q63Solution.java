@@ -9,49 +9,35 @@ import org.junit.Test;
  * 2018/10/29
  */
 public class Q63Solution {
-    //TODO 未解决
-    private int pathCount = 0;
-    private int[][] next = {{1, 0}, {0, 1}};
-    private int[][] book;
-    private int[][] obstacleGrid;
-
-    private int ex;
-    private int ey;
-
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        this.obstacleGrid = obstacleGrid;
-        book = new int[obstacleGrid.length][obstacleGrid[0].length];
-        ex = obstacleGrid.length - 1;
-        ey = obstacleGrid[0].length - 1;
-        dfs(0, 0);
-        return pathCount;
-    }
-
-    private void dfs(int sx, int sy) {
-        if (obstacleGrid[sx][sy] == 1) {
-            return;
+        int y = obstacleGrid.length;
+        int x = obstacleGrid[0].length;
+        int[][] steps = new int[y][x];
+        if (obstacleGrid[0][0] != 1) {
+            steps[0][0] = 1;
+        } else {
+            return 0;
         }
-        if (sx == ex && sy == ey) {
-            pathCount++;
-            return;
-        }
-        for (int k = 0; k <= 1; k++) {
-            int dx = sx + next[k][0];
-            int dy = sy + next[k][1];
-            if (dx > ex || dy > ey) {
-                continue;
-            }
-            if (book[dx][dy] != 1 && obstacleGrid[dx][dy] != 1) {
-                book[dx][dy] = 1;
-                dfs(dx, dy);
-                book[dx][dy] = 0;
+        for (int i = 0; i < y; i++) {
+            for (int j = 0; j < x; j++) {
+                if (obstacleGrid[i][j] == 1) {
+                    steps[i][j] = 0;
+                    continue;
+                }
+                if (i - 1 >= 0) {
+                    steps[i][j] += steps[i - 1][j];
+                }
+                if (j - 1 >= 0) {
+                    steps[i][j] += steps[i][j - 1];
+                }
             }
         }
+        return steps[y - 1][x - 1];
     }
 
     @Test
     public void xx() {
-        int[][] x = {{0,0,0},{0,1,0},{0,0,0}};
+        int[][] x = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
         //int[][] x = {{0},{0}};
         //int[][] x = {{1, 0}};
         int i = uniquePathsWithObstacles(x);
