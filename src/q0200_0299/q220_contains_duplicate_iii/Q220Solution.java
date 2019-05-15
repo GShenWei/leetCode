@@ -16,6 +16,8 @@ public class Q220Solution {
             return false;
         }
         TreeSet<Long> set = new TreeSet<>();
+        //floor(E e) 方法返回在这个集合中小于或者等于给定元素的最大元素，如果不存在这样的元素,返回null.
+        //ceiling(E e) 方法返回在这个集合中大于或者等于给定元素的最小元素，如果不存在这样的元素,返回null.
         for (int i = 0; i < nums.length; i++) {
             int num = nums[i];
             long thisNum = (long) num;
@@ -24,6 +26,7 @@ public class Q220Solution {
                 return true;
             } else {
                 set.add(thisNum);
+                //如果set中的个数超过了范围，就删除掉最前面那个（就算因为set的特性，那个数已经被后来同样数的代替了，但是它还是这个数）
                 if (set.size() > k) {
                     set.remove((long) nums[i - k]);
                 }

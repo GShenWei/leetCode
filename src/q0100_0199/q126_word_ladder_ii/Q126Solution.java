@@ -51,6 +51,8 @@ public class Q126Solution {
             char[] chars = thisWord.toCharArray();
             for (int k = 0; k < thisWord.length(); k++) {
                 char original = chars[k];
+
+                //尝试从将某一个字符从a改到z然后去字典中看有没有这个词
                 for (char c = 'a'; c != 'z'; c++) {
                     if (c != original) {
                         chars[k] = c;

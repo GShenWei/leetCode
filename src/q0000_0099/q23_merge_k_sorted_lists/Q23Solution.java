@@ -55,7 +55,7 @@ public class Q23Solution {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        //维护一个大小为k的优先队列
+        //维护一个优先队列
         PriorityQueue<Pair> queue = new PriorityQueue<>((o1, o2) -> {
             if (o1.node.val > o2.node.val) {
                 return 1;
@@ -74,6 +74,8 @@ public class Q23Solution {
         int sz = newListNodes.size();
         ListNode resPre = new ListNode(-1);
         ListNode pre = resPre;
+
+        //用来保存某个链表是不是空掉了
         Set<Integer> notNullIndex = new HashSet<>();
         for (int l = 0; l < sz; l++) {
             notNullIndex.add(l);
@@ -103,7 +105,7 @@ public class Q23Solution {
                     pre.next = minPair.node;
                     pre = minPair.node;
                     pre.next = null;
-                    //下次应该入队的是目前为止，队列中最小的元素
+                    //下次应该入队的是目前为止，队列中最小的元素所在的链表中的数据
                     if (queue.peek() != null) {
                         i = queue.peek().index;
                     }

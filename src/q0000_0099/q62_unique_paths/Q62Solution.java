@@ -29,11 +29,30 @@ public class Q62Solution {
         return (int) (x1 / x2);
     }
 
+    public int solution2(int m, int n) {
+        int[][] re = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            re[i][0] = 1;
+        }
+        for (int j = 0; j < n; j++) {
+            re[0][j] = 1;
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                re[i][j] = re[i][j - 1] + re[i - 1][j];
+            }
+        }
+        return re[m - 1][n - 1];
+    }
+
     @Test
     public void xx() {
-        System.out.println(uniquePaths(36, 7));
-        System.out.println(uniquePaths(2, 3));
-        System.out.println(uniquePaths(100, 20));
+        //System.out.println(uniquePaths(36, 7));
+        System.out.println(uniquePaths(5, 4));
+        System.out.println(solution2(5, 4));
+        System.out.println(uniquePaths(6, 3));
+        System.out.println(solution2(6, 3));
+        System.out.println(solution2(100, 200));
     }
 
 }
