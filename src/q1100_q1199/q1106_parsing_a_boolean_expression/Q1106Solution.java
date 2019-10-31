@@ -76,7 +76,7 @@ public class Q1106Solution {
     }
 
     @Test
-    public void go(){
+    public void go() {
         boolean k = parseBoolExpr("|(&(t,f,t),!(t))");
         System.out.println(k);
     }
