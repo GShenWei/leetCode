@@ -18,21 +18,14 @@ public class Q122Solution {
             return 0;
         }
         int res = 0;
-        for (int i = 1; i < prices.length - 1; i++) {
-            if (i == 1) {
-                if (prices[i - 1] <= prices[i]) {
-                    res = res - prices[i - 1];
-                }
-            }
-            if (i == prices.length - 2) {
-                if (prices[i + 1] >= prices[i]) {
-                    res = res + prices[i + 1];
-                }
-            }
-            if (prices[i - 1] >= prices[i] && prices[i] < prices[i + 1]) {
+        boolean buy = false;
+        for (int i = 0; i < prices.length; i++) {
+            if (!buy && i < prices.length - 1 && prices[i] < prices[i + 1]) {
                 res = res - prices[i];
-            } else if (prices[i - 1] <= prices[i] && prices[i] > prices[i + 1]) {
+                buy = true;
+            } else if (buy && (i == prices.length - 1 || prices[i] > prices[i + 1])){
                 res = res + prices[i];
+                buy = false;
             }
         }
         return res;
@@ -40,7 +33,7 @@ public class Q122Solution {
 
     @Test
     public void xx() {
-        int a[] = {1, 2, 4};
+        int a[] = {2, 2, 5};
         System.out.println(maxProfit(a));
     }
 }
