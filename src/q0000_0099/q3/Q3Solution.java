@@ -30,7 +30,7 @@ public class Q3Solution {
             } else {
                 //获取在插入现在这个字符之前目前这个字符所在的位置
                 int i1 = charNums.get(charNums.size() - 1);
-                //获取它们最大的原因是,可能之前的l已经考虑过其它的字符会有重复的
+                //获取它们最大的原因是,到l为止,已经出现了重复的字符,所以只能从i1和l中较大的开始算重复数据,可能之前的l已经考虑过其它的字符会有重复的
                 l = Math.max(l, i1);
                 charNums.add(i);
             }
