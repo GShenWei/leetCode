@@ -7,9 +7,9 @@ class Q198Solution {
     fun rob(nums: IntArray): Int {
         if (nums.isEmpty()) return 0
         val peak = IntArray(nums.size)
-        return when {
-            nums.size == 1 -> nums[0]
-            nums.size == 2 -> max(nums[0], nums[1])
+        return when (nums.size) {
+            1 -> nums[0]
+            2 -> max(nums[0], nums[1])
             else -> {
                 peak[0] = nums[0]
                 peak[1] = max(nums[0], nums[1])
