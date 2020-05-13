@@ -1,4 +1,4 @@
-package q0000_0099.q10;
+package q0000_0099.q23_merge_k_sorted_lists;
 
 import my.ListNode;
 import my.ListNodeUtils;
