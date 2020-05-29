@@ -18,7 +18,7 @@ public class ObjectStreamDemo {
         b.a = a;
         a.b = b;
         //创建文件字节输出流对象
-        FileOutputStream outputStream = new FileOutputStream("D:\\gggggggg.txt");
+        FileOutputStream outputStream = new FileOutputStream("/Users/chenwei/logs/gggggggg.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
         objectOutputStream.writeObject(a);
         //最后记得关闭资源，objectOutputStream.close()内部已经将outputStream对象资源释放了，所以只需要关闭objectOutputStream即可
@@ -28,7 +28,7 @@ public class ObjectStreamDemo {
 
     @Test
     public void yy() throws IOException, ClassNotFoundException {
-        FileInputStream inputStream = new FileInputStream("D:\\gggggggg.txt");
+        FileInputStream inputStream = new FileInputStream("/Users/chenwei/logs/gggggggg.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
         Object o = objectInputStream.readObject();
         System.out.println(o);
@@ -40,6 +40,7 @@ public class ObjectStreamDemo {
 class A implements Serializable {
     B b;
     String aStr = "这是A";
+    String t = "这是B";
 }
 
 class B implements Serializable {
