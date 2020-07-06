@@ -37,6 +37,7 @@ func Max(a int, b int) int {
 	} else {
 		return b
 	}
+
 }
 
 func Min(a int, b int) int {
