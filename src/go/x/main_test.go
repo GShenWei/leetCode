@@ -53,7 +53,7 @@ func TestType(t *testing.T) {
 		if h, ok := s.(*haha); ok {
 			s.Say(h.Name)
 			h.Gsay(func(s string) {
-				fmt.Print("\n" + s + "kkkkkkkkkkkkk")
+				fmt.Print("\n" + s + "kkkkkkkkkkkkkk")
 			})
 		}
 	}(&haha{Name: "小王"})
