@@ -1,4 +1,4 @@
-package q1100_q1199.q1035_uncrossed_lines;
+package q1100_1199.q1035_uncrossed_lines;
 
 import org.junit.Test;
 

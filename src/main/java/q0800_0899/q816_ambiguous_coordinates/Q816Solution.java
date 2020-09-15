@@ -1,4 +1,4 @@
-package q0800_q0899.q816_ambiguous_coordinates;
+package q0800_0899.q816_ambiguous_coordinates;
 
 import org.junit.Test;
 

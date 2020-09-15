@@ -1,4 +1,4 @@
-package q1100_q1199.q1106_parsing_a_boolean_expression;
+package q1100_1199.q1106_parsing_a_boolean_expression;
 
 
 import org.junit.Test;

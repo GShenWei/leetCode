@@ -1,4 +1,4 @@
-package q1100_q1199.q1109_corporate_flight_bookings;
+package q1100_1199.q1109_corporate_flight_bookings;
 
 import org.junit.Test;
 

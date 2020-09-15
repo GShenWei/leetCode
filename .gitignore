@@ -24,3 +24,6 @@ out/
 /.idea/
 /lib/
 leetCode.iml
+x
+target
+venv

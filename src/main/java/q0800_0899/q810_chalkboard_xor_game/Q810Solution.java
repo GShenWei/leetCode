@@ -1,4 +1,4 @@
-package q0800_q0899.q810_chalkboard_xor_game;
+package q0800_0899.q810_chalkboard_xor_game;
 
 import org.junit.Test;
 

@@ -45,3 +45,44 @@ func TestSql(t *testing.T) {
 		fmt.Println("DROP TABLE IF EXISTS " + tbName + t.Format("2006_01_02") + ";")
 	}
 }
+
+type Income func(a string)
+
+func TestType(t *testing.T) {
+	func(s hey) {
+		if h, ok := s.(*haha); ok {
+			s.Say(h.Name)
+			h.Gsay(func(s string) {
+				fmt.Print("\n" + s + "kkkkkkkkkkkkk")
+			})
+		}
+	}(&haha{Name: "小王"})
+}
+
+type hey interface {
+	Say(a string) string
+	Fly(a string) string
+	Gsay(Income)
+}
+
+type haha struct {
+	Name string
+}
+
+func (h *haha) Fly(a string) string {
+	fmt.Print(a + ":Fly")
+	return a + "f"
+}
+
+func (h *haha) Say(a string) string {
+	fmt.Print(a)
+	return a
+}
+func (h *haha) Gsay(f Income) {
+	f(h.Name)
+}
+
+func TestTypefdfd(t *testing.T) {
+	fmt.Println(`你好吗
+降低佛山接地佛圣诞节`)
+}
