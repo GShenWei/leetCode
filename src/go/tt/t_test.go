@@ -16,7 +16,7 @@ var reg, _ = regexp.Compile(`^\d{11}$`)
 
 func TestGo(t *testing.T) {
 	fmt.Printf("%p\n", reg)
-	k := reg.MatchString("1661100110011")
+	k := reg.MatchString("16611001100111")
 	fmt.Println(k)
 
 }
