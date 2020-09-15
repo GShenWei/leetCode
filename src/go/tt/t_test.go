@@ -18,4 +18,5 @@ func TestGo(t *testing.T) {
 	fmt.Printf("%p\n", reg)
 	k := reg.MatchString("166110011001")
 	fmt.Println(k)
+
 }
