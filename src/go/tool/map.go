@@ -2,6 +2,8 @@ package tool
 
 import "github.com/cheekybits/genny/generic"
 
+//genny -in=src/go/tool/map.go -out=src/go/tool/map-gen2.go gen "XkItem=string,int XvItem=string,int"
+//genny -in map.go -out map-gen2.go gen "XkItem=string XvItem=int"
 type XkItem generic.Type
 type XvItem generic.Type
 
