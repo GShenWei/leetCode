@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static io.vavr.API.*;
@@ -33,7 +34,7 @@ public class ArrayListStudy {
     }
 
     @Test
-    public void xx(){
+    public void xx() {
         List<Integer> arr = new ArrayList<>(8);
         arr.add(1);
         arr.add(2);
@@ -45,6 +46,8 @@ public class ArrayListStudy {
         for (Integer integer : arr) {
             System.out.println(integer);
         }
+        var now = LocalDateTime.now();
+        now = now.minusHours(1);
         System.out.println(Duration.between(now, LocalDateTime.now()).toMillis());
     }
 
@@ -80,6 +83,7 @@ public class ArrayListStudy {
         }
         System.out.println(Duration.between(now, LocalDateTime.now()).toMillis());
     }
+
     @Test
     public void rerere() {
         Tuple2<String, Integer> tup = Tuple.of("hello", 1);
