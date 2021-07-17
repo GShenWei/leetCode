@@ -33,8 +33,7 @@ public class ArrayListStudy {
     }
 
     @Test
-    public void xx() {
-        LocalDateTime now = LocalDateTime.now();
+    public void xx(){
         List<Integer> arr = new ArrayList<>(8);
         arr.add(1);
         arr.add(2);
