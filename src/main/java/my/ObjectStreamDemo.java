@@ -18,7 +18,8 @@ public class ObjectStreamDemo {
         b.a = a;
         a.b = b;
         //创建文件字节输出流对象
-        FileOutputStream outputStream = new FileOutputStream("/Users/chenwei/logs/gggggggg.txt");
+        FileOutputStream outputStream = new FileOutputStream("""
+                /Users/chenwei/logs/gggggggg.txt""");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
         objectOutputStream.writeObject(a);
         //最后记得关闭资源，objectOutputStream.close()内部已经将outputStream对象资源释放了，所以只需要关闭objectOutputStream即可
