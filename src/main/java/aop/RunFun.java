@@ -8,9 +8,9 @@ import java.lang.reflect.Proxy;
  */
 public class RunFun {
     public static void main(String[] args) {
-        Subject realSubject = new RealSubject();
-        SubjectInvocationHandler handler = new SubjectInvocationHandler(realSubject);
-        Subject p = (Subject) Proxy.newProxyInstance(realSubject.getClass().getClassLoader(),
+        var realSubject = new RealSubject();
+        var handler = new SubjectInvocationHandler(realSubject);
+        var p = (Subject) Proxy.newProxyInstance(realSubject.getClass().getClassLoader(),
                 realSubject.getClass().getInterfaces(), handler);
         p.SayGoodBye();
     }
