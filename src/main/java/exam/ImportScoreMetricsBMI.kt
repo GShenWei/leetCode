@@ -83,8 +83,9 @@ class ScoreMetricsBMIListener(
                                             mtx.gradeRange[grade] = "(-∞,$xx]"
                                         }
                                         if (v.stringValue.contains("≥")) {
-                                            val xx = v.stringValue.replace("≥", "").toDouble()
-                                            mtx.gradeRange[grade] = "($xx,+∞)"
+                                            val xx = v.stringValue.replace("≥", "").toBigDecimal().setScale(1)
+                                            val newX = (xx - BigDecimal("0.1")).setScale(1)
+                                            mtx.gradeRange[grade] = "($newX,+∞)"
                                         }
                                     }
                                 }
@@ -180,9 +181,9 @@ class ScoreMetricsBMIListener(
                 mex.levelName = "'${data.levelName}'"
                 mex.isPlus = if (isPlus) 1 else 0
                 mex.proportion = 0.0
+                dealProportion(mex)
                 val res = getStringList(mex)
                 resLi.add(res.joinToString(",", "(", ")") { it })
-                dealProportion(mex)
             }
         }
         sql += resLi.joinToString(",")

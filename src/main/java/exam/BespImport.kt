@@ -6,6 +6,11 @@ import com.alibaba.excel.read.metadata.ReadSheet
 import org.junit.Test
 import java.io.File
 
+data class SbjScore(
+    val SubjectId: Int,
+    val Sex: String,
+    val ActGrade: Int,
+)
 
 class BespImport {
     private val sbjMap = mutableMapOf(
@@ -36,7 +41,7 @@ class BespImport {
     )
 
     companion object {
-        val lastPlusValue = mutableMapOf<Int, MutableMap<Int, Double>>()
+        val lastPlusValue = mutableMapOf<SbjScore, Double>()
     }
 
     @Test

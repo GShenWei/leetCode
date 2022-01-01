@@ -206,11 +206,13 @@ class ScoreMetricsListener(
                 mex.subjectId = subject
                 var range: String
                 if (i == 0) {
-                    range = if (BespImport.lastPlusValue[gd] != null && BespImport.lastPlusValue[gd]!![subject] != null) {
+                    val dt = SbjScore(subject, sex, gd)
+                    val ahaha = BespImport.lastPlusValue[dt]
+                    range = if (ahaha != null) {
                         if (biggerBest) {
-                            "[${score},${BespImport.lastPlusValue[gd]!![subject]})"
+                            "[${score},$ahaha)"
                         } else {
-                            "(${BespImport.lastPlusValue[gd]!![subject]},${score}]"
+                            "($ahaha,${score}]"
                         }
                     } else {
                         if (biggerBest) {
@@ -266,10 +268,9 @@ class ScoreMetricsListener(
                     resLi.add(newRes.joinToString(",", "(", ")") { it.toString() })
                 }
                 if (isPlus && i == li.size - 1) {
-                    if (BespImport.lastPlusValue[gd] == null) {
-                        BespImport.lastPlusValue[gd] = mutableMapOf()
-                    }
-                    BespImport.lastPlusValue[gd]!![subject] = score
+                    val dt = SbjScore(subject, sex, gd)
+                    val ahaha = BespImport.lastPlusValue[dt]
+                    BespImport.lastPlusValue[dt] = score
                 }
             }
         }
