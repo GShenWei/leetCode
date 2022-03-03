@@ -64,18 +64,19 @@ class KanBanData {
     )
     private var formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
     private val randomRd = Random(System.currentTimeMillis())
+
     @Test
     fun start() {
         val now = LocalDateTime.now()
-        for (i in 0..15) {
+        for (i in -30..15) {
             val d = now.minusDays(i.toLong())
-            soutOneDay(d.format(formatter),1)
+            soutOneDay(d.format(formatter), 1)
         }
         println()
         println()
-        for (i in 0..15) {
+        for (i in -30..15) {
             val d = now.minusDays(i.toLong())
-            soutOneDay(d.format(formatter),2)
+            soutOneDay(d.format(formatter), 2)
         }
     }
 
@@ -113,11 +114,7 @@ class KanBanData {
                 val joinCount = userCount?.minus(claStuLi.count { it.recordList.size == 0 })
                 val taskCount = userCount?.times(sportMap.size)
                 val finishCount = claStuLi.sumOf { it.recordList.size }
-                var finishRate = 0
-                if (taskCount != null) {
-                    finishRate = finishCount / taskCount
-                }
-                print(", $inTime, $outTime, $userCount, $joinCount, $taskCount, $finishCount, $finishRate, $day, '天'),")
+                print(", $inTime, $outTime, $userCount, $joinCount, $taskCount, $finishCount, $day, '日'),")
                 println()
             }
         }
@@ -131,23 +128,19 @@ class KanBanData {
                 // 有多少这个体育的记录就有多少人参加
                 val joinCount = recordLi.size
                 // 每人一条任务
-                val taskCount = userCount
-                val finishCount = gradeStuLi.count {
-                    var ok = false
+                val overallTotalCount = userCount
+                val overallFinishCount = gradeStuLi.count {
                     for (record in it.recordList) {
                         if (record.sportId == sportId) {
-                            ok = true
-                            break
+                            return@count true
                         }
                     }
-                    ok
+                    return@count false
                 }
                 val opm = recordLi.map { it.count / it.useTime }.average()
-                val finishRate = finishCount / taskCount
-                print(", $userCount, $joinCount, $taskCount, $finishCount, $finishRate, $finishCount, $opm, $day, '天'),")
+                print(", $userCount, $joinCount, $overallTotalCount, $overallFinishCount, $overallFinishCount, $opm, $day, '日'),")
                 println()
             }
-
         }
     }
 
