@@ -2,14 +2,13 @@ package my;
 
 import org.junit.Test;
 
-import java.text.Format;
-import java.text.MessageFormat;
+import java.lang.reflect.Field;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.time.temporal.WeekFields;
 import java.util.Date;
-import java.util.Locale;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author wei.zhan@hand-china.com
@@ -54,7 +53,45 @@ public class LocalDateTest {
         LocalDate d = LocalDate.parse("20220313", dm);
         var tb = Period.between(LocalDate.now(), d).getDays();
         System.out.println(tb);
-        String.format("%02d",d.getMonth().getValue());
-        System.out.printf("%02d",d.getMonth().getValue());
+        String.format("%02d", d.getMonth().getValue());
+        System.out.printf("%02d", d.getMonth().getValue());
     }
+
+    @Test
+    public void klk() {
+        var n = LocalDate.of(2015, 1, 1);
+        var fd = WeekFields.of(DayOfWeek.MONDAY, 4);
+        System.out.println(n.format(DateTimeFormatter.ISO_WEEK_DATE));
+        System.out.println(n.get(fd.weekOfYear()));
+    }
+
+    @Test
+    public void sim() throws IllegalAccessException {
+        Stu data = new Stu();
+        data.value1 = "x";
+        data.value2 = "x";
+        data.value3 = "y";
+        data.value4 = "y";
+        Set<String> s = new HashSet<>();
+        Field[] fs = Stu.class.getDeclaredFields();
+        for (Field f : fs) {
+            String name = f.getName();
+            System.out.println(name);
+            if (name.startsWith("value")) {
+                f.setAccessible(true);
+                s.add(f.get(data) + "");
+            }
+        }
+        for (String ss : s) {
+            System.out.println(ss);
+        }
+    }
+
+}
+
+class Stu {
+    String value1;
+    String value2;
+    String value3;
+    String value4;
 }
