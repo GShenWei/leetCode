@@ -85,6 +85,12 @@ public class LocalDateTest {
         for (String ss : s) {
             System.out.println(ss);
         }
+        for (var i = 1; ; i++) {
+            System.out.println(i);
+            if (i > 10) {
+                break;
+            }
+        }
     }
 
 }
