@@ -75,3 +75,15 @@ func TestPl(t *testing.T) {
 func gl(f func([][]int), matrix [][]int) {
 	f(matrix)
 }
+
+func Test_io(t *testing.T) {
+	var x = []int{0, 0, 0, 0, 0, 0}
+	gg(x)
+	fmt.Println(x)
+}
+
+func gg(x []int) {
+	x[0] = 2
+	x[1] = 2
+	x[2] = 2
+}
