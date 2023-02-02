@@ -24,6 +24,6 @@ out/
 /.idea/
 /lib/
 leetCode.iml
-x
 target
 venv
+/src/js/node_modules/

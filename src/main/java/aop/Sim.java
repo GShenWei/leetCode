@@ -133,7 +133,7 @@ public class Sim {
 
     @Test
     public void go(){
-        List<Integer> li = new ArrayList<Integer>();
+        List<Integer> li = new ArrayList<>();
         li.add(1);
         li.add(3);
         li.add(2);
