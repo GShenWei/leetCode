@@ -110,3 +110,13 @@ func TestM(t *testing.T) {
 	// 运行一定时间后退出
 	time.Sleep(5 * time.Second)
 }
+
+func Test_swap(t *testing.T) {
+	a, b := 1, 2
+	si(&a, &b)
+	fmt.Println(a, "--", b)
+}
+
+func si(a, b *int) {
+	*a, *b = *b, *a
+}

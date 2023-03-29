@@ -1,11 +1,14 @@
 # -*- coding: UTF-8 -*-
 # 数据发布
-import hashlib, hmac
-import requests
-import json, time
+import hashlib
+import hmac
+import json
 import random
+import time
 
-# 腾讯云小微提供的appkey/accessToken
+import requests
+
+# 提供的appkey/accessToken
 appKey = "cc74cbc0913611eba2707da5873410ef"
 accessToken = b"88137f6df8d8422eb4540a6b680f144d"
 
@@ -110,7 +113,7 @@ if __name__ == '__main__':
     # print(error_code,result_text)
 
     # pub_data_ids = read_kp_data(path)
-    pub_data_ids = [4247]
+    pub_data_ids = [2175, 2172, 2180]
     num = 0
     for pub_id in pub_data_ids:
         num += 1
@@ -118,7 +121,7 @@ if __name__ == '__main__':
         #     continue
         time1 = time.time()
         time.sleep(random.uniform(0.5, 0.55))
-        status_code, result_text = pub_data(3, [pub_id], '正式')  # 正式 or 测试
+        status_code, result_text = pub_data(1, [pub_id], '测试')  # 正式 or 测试
         # error_code = json.loads(result_text)['payload']['error_code']
         print(str(pub_id) + result_text)
 

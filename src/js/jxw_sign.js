@@ -89,10 +89,27 @@ function rep() {
     console.log(path.replace(r, "$1"))
 }
 
+function kong2() {
+    const mac_address = ["12", "34", "45"];
+    const keys = [];
+    mac_address.forEach((item) => {
+        keys.push({
+            clientKey: `_${item}`,
+            type: 'mac_address'
+        });
+    });
+    console.log(keys)
+}
+
 describe('Array', function () {
     describe('#indexOf()', function () {
         it('should return -1 when the value is not present', function () {
             rep()
+        });
+    });
+    describe('#indexOf()', function () {
+        it('should return -1 when the value is not present', function () {
+            kong2()
         });
     });
 });
